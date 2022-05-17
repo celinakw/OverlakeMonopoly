@@ -1,0 +1,30 @@
+Player Class
+  where they are
+  amount of money
+  properties owned
+
+Monopoly Game Class:
+  runs the game
+  monopoly? (boolean)
+  dice
+  2d array of board spaces (print square to visualize game)
+  
+Board Space Class:
+  location
+  cost
+  houses
+  hotels
+  tax
+  type of board space
+  owned? (boolean)
+
+Methods:
+  get place name
+  get price info
+  roll dice
+  bail
+  get type of board space
+  get tax
+  
+    
+    
