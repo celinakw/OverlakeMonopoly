@@ -13,11 +13,11 @@ public class Game{
       Scanner myObj = new Scanner(System.in);
       String action;
       boolean gameOver = false;
-     
+      
       Player playerOne = new Player();
       Player playerTwo = new Player();
       
-      Place squareOne = new Place("Go",null, 0, 0, false);
+      Place squareOne = new Place("Go!",null, 0, 0, false);
       Place squareTwo = new Place("Place 1",null, 300, 100, true);
       Place squareThree = new Place("Place 2",null, 400, 150,true);
       Place squareFour = new Place("Chance Card",null, 0, 0, false, "card");
@@ -25,15 +25,19 @@ public class Game{
       Place[] board = {squareOne, squareTwo, squareThree, squareFour};
       Player[] order = {playerOne, playerTwo};
       ArrayList<String> positions = new ArrayList<String>();
-      for(int i = 0; i < board.length-1; i++){
-         positions.add("_");
+      for(int i = 0; i < board.length; i++){
+         String temp = "";
+         for(int j = 0; j < board[i].getName().length(); j++){
+            temp+="_";
+         }
+         positions.add(temp);
       }
       positions.set(0,"1&2");
       int turn = 0;
      //Game loop
       while(!gameOver){
          System.out.print("[");
-         for(int i = 0; i < board.length-2; i++){
+         for(int i = 0; i < board.length-1; i++){
             System.out.print(board[i].getName()+", ");
          }
          System.out.println(board[board.length-1].getName()+"]");
@@ -44,6 +48,7 @@ public class Game{
          
          //actions
          if(action.toLowerCase().equals("move")){
+            //needs to have a section that edits player position.
             int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
             order[turn % 2].move(moveAmount);
             board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
