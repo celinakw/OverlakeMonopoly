@@ -63,6 +63,14 @@ public class Place{
             System.out.println("You fail ap calc, and lose 50 dollars. ");
             play.take(50);
          }
+         if(randNum == 1){
+            System.out.println("Overlake cafeteria gave you salmonella. Hospital bills are expensive. Kim Stevens needs a raise after your projectile vomid. School sues.");
+            play.take(play.getBank - 1);
+         }
+         if(randNum == 2){
+            System.out.println("No more depression! Summer time.");
+            play.give(10000000000000);
+         }
       }
    }
    
