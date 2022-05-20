@@ -43,6 +43,12 @@ public class Player{
        }
    
     }
+    
+    public void forceMove(int loc){
+    
+      pos = loc;
+    
+    }
  
     public ArrayList<Place> ownPlace(){
       return owned;

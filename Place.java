@@ -68,11 +68,13 @@ public class Place{
             owner.give(rent);
          }
        }
+
        //Chance cards
        if(this.isSpecial.toLowerCase().equals("card")){
-         int randNum = (int)(Math.random() * 3);
+         int randNum = (int)(Math.random() * 5);
+
          if(randNum == 0){
-            System.out.println("You fail ap calc, and lose 50 dollars. ");
+            System.out.println("You fail ap calc exam, Rhonda wants 50 dollars back. ");
             play.take(50);
          }
          if(randNum == 1){
@@ -81,7 +83,17 @@ public class Place{
          }
          if(randNum == 2){
             System.out.println("No more depression! Summer time.");
-            play.give(100000000);
+            play.give(1000);
+         }
+         if(randNum == 3){
+         //add Game.getBoard 
+            System.out.println("Chris wants to give you donuts! You've been moved to Mathsci Conference Room");
+            play.move(Game.getBoard() - 1 - play.getPos());
+         }
+         if(randNum == 4){
+            System.out.println("You're caught cracking your mom jokes, get sent to SRB.");
+            //add jail location and test
+            play.forceMove(Game.getBoard.length / 4 + 1);
          }
       }
    }
