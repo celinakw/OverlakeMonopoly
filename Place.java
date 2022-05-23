@@ -96,6 +96,41 @@ public class Place{
             play.forceMove(Game.getBoard.length / 4 + 1);
          }
       }
+       
+      if(this.isSpecial.toLowerCase().equals("company")){
+         if(this.owner ==  null){
+              System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost);
+              Scanner myObj = new Scanner(System.in);
+              String response = myObj.nextLine();
+              finished = false;
+              while(finished == false){
+                  if(response.toLowerCase().equals("yes")){
+                     play.take(cost);
+                     this.owner = play;
+                     play.addPlace(this);
+                     finished = true;
+                     int randomRent = 
+                  }
+                  else if (response.toLowerCase().equals("no")){
+                     finished = true;
+                     //auction or does nothing
+                     //I dont think auctions are the best idea, maybe we can add it later
+                  }
+                  else {
+                     System.out.println("Not a valid response");
+                  }
+              }
+               
+         }
+         else if(this.owner == play){
+ 
+         }
+         else{
+            play.take(rent);
+            owner.give(rent);
+         }
+         
+      }
    }
    
    public String getName(){
