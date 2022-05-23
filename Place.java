@@ -1,5 +1,7 @@
 
 
+
+
 //Final Project
 //Alec Zoe Felix Celina Gavin
 //Overlake Monopoly
@@ -51,8 +53,7 @@ public class Place{
                   }
                   else if (response.toLowerCase().equals("no")){
                      finished = true;
-                     //auction or does nothing
-                     //I dont think auctions are the best idea, maybe we can add it later
+
                   }
                   else {
                      System.out.println("Not a valid response");
@@ -88,12 +89,12 @@ public class Place{
          if(randNum == 3){
          //add Game.getBoard 
             System.out.println("Chris wants to give you donuts! You've been moved to Mathsci Conference Room");
-            play.move(Game.getBoard() - 1 - play.getPos());
+            //play.move(Game.getBoard() - 1 - play.getPos());
          }
          if(randNum == 4){
-            System.out.println("You're caught cracking your mom jokes, get sent to SRB.");
+            System.out.println("You were caught cheating, and get sent to SRB.");
             //add jail location and test
-            play.forceMove(Game.getBoard.length / 4 + 1);
+            //play.forceMove(Game.getBoard.length / 4 + 1);
          }
       }
        
@@ -112,8 +113,7 @@ public class Place{
                   }
                   else if (response.toLowerCase().equals("no")){
                      finished = true;
-                     //auction or does nothing
-                     //I dont think auctions are the best idea, maybe we can add it later
+
                   }
                   else {
                      System.out.println("Not a valid response");
@@ -126,12 +126,51 @@ public class Place{
          }
          else{
             int randomRent = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
-            System.out.println("You rolled: " + randomRent + "and must pay: " + randomRent * 4);
-            play.take(randomRent);
-            owner.give(randomRent);
+            System.out.println("You rolled: " + randomRent + "  and must pay: " + randomRent * 4);
+            play.take(randomRent * 4);
+            owner.give(randomRent * 4);
          }
          
       }
+      
+      if(this.isSpecial.toLowerCase().equals("jail")){
+      
+      
+         if(play.isJail()){
+         
+            if(play.getTimeJail() == 3){
+               play.take(50);
+               System.out.println("You stayed in jail too long. Pay $50 bail and leave.");
+            }
+            
+            else{
+               int roll1 = (int)(Math.random()*6) + 1;
+               int roll2 = (int)(Math.random()*6) + 1;
+               System.out.println(roll1);
+               System.out.println(roll2);
+            
+               if(roll1 == roll2){
+                  play.outJail();
+                  System.out.println("Lucky! You are out of jail");
+               }
+               else{
+                  System.out.println("Unlucky! You are still in jail.");
+               }
+               
+            }
+            
+         } 
+      
+      }
+      
+      if(this.isSpecial.toLowerCase().equals("gojail")){
+         
+         System.out.println("You moms going to jail. Bye bye.");
+         play.goToJail();
+      
+      }
+      
+      
    }
    
    public String getName(){
@@ -139,5 +178,8 @@ public class Place{
    }
  
  }
+ 
+ 
+
  
  
