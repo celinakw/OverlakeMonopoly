@@ -109,7 +109,6 @@ public class Place{
                      this.owner = play;
                      play.addPlace(this);
                      finished = true;
-                     int randomRent = 
                   }
                   else if (response.toLowerCase().equals("no")){
                      finished = true;
@@ -126,8 +125,10 @@ public class Place{
  
          }
          else{
-            play.take(rent);
-            owner.give(rent);
+            int randomRent = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
+            System.out.println("You rolled: " + randomRent + "and must pay: " + randomRent * 4);
+            play.take(randomRent);
+            owner.give(randomRent);
          }
          
       }
