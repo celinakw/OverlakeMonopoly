@@ -17,10 +17,10 @@ public class Game{
       Player playerOne = new Player();
       Player playerTwo = new Player();
       
-      Place squareOne = new Place("Go!",null, 0, 0, false);
-      Place squareTwo = new Place("Place 1",null, 300, 100, true);
-      Place squareThree = new Place("Place 2",null, 400, 150,true);
-      Place squareFour = new Place("Chance Card",null, 0, 0, false, "card");
+      Place squareOne = new Place("Go! 0",null, 0, 0, false);
+      Place squareTwo = new Place("place 1",null, 300, 100, true);
+      Place squareThree = new Place("place 2",null, 400, 150,true);
+      Place squareFour = new Place("Chance Card 3",null, 0, 0, false, "card");
   
       Place[] board = {squareOne, squareTwo, squareThree, squareFour};
       Player[] order = {playerOne, playerTwo};
