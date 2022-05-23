@@ -21,8 +21,9 @@ public class Game{
       Place squareTwo = new Place("place 1",null, 300, 100, true);
       Place squareThree = new Place("place 2",null, 400, 150,true);
       Place squareFour = new Place("Chance Card 3",null, 0, 0, false, "card");
+      Place squareFive = new Place("Water Works",null, 150, 0, false, "company");
   
-      Place[] board = {squareOne, squareTwo, squareThree, squareFour};
+      Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive};
       Player[] order = {playerOne, playerTwo};
       ArrayList<String> positions = new ArrayList<String>();
       for(int i = 0; i < board.length; i++){
