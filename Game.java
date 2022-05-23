@@ -1,4 +1,3 @@
-
 //Final Project
 //Alec Zoe Felix Celina Gavin
 //Overlake Monopoly
@@ -7,6 +6,9 @@ import java.util.*;
 
 public class Game{
 
+   public static void getBoard(){
+      //not sure what this is supposed to do but made it anyways 
+   }
 
    public static void main(String args[]){
   
@@ -22,8 +24,11 @@ public class Game{
       Place squareThree = new Place("place 2",null, 400, 150,true);
       Place squareFour = new Place("Chance Card 3",null, 0, 0, false, "card");
       Place squareFive = new Place("Water Works",null, 150, 0, false, "company");
+      Place squareSix = new Place("SRB",null, 0, 0, false, "jail");
+      Place squareSeven= new Place("Go to SRB",null, 0, 0, false, "gojail");
+      
   
-      Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive};
+      Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven};
       Player[] order = {playerOne, playerTwo};
       ArrayList<String> positions = new ArrayList<String>();
       for(int i = 0; i < board.length; i++){
@@ -49,11 +54,18 @@ public class Game{
          
          //actions
          if(action.toLowerCase().equals("move")){
-            //needs to have a section that edits player position.
-            int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
-            order[turn % 2].move(moveAmount);
-            board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
-            turn++;
+            if(order[turn % 2].isJail()){
+               board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+               turn++;
+            }
+            else{
+               //needs to have a section that edits player position.
+               //int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
+               int moveAmount= myObj.nextInt();
+               order[turn % 2].move(moveAmount);
+               board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+               turn++;
+            }
          }
          //get money of current player
          else if(action.toLowerCase().equals("money")){
