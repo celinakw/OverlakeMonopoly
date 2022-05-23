@@ -7,12 +7,16 @@ public class Player{
 
     private int bank;
     private int pos;
+    private boolean inJail;
+    private int timeJail;
     private ArrayList<Place> owned = new ArrayList<Place>();
    
     public Player(){
    
        bank = 1500;
        pos = 0;
+       inJail= false;
+       timeJail = 0;
    
     }
    
@@ -31,7 +35,7 @@ public class Player{
     public void move(int num){
    
        for(int i = num; i > 0; i--){
-          if(pos == 3){
+          if(pos == 6){
             pos = 0;
             bank+= 200;
             System.out.println("You passed go! ");
@@ -65,6 +69,37 @@ public class Player{
     }
     public int getPos(){
        return pos;
+    }
+    
+    public void goToJail(){
+    
+      inJail = true;
+      pos = 5;
+    
+    }
+    
+    public boolean isJail(){
+    
+      return inJail;
+    
+    }
+    
+    public void outJail(){
+    
+      inJail = false;
+      
+    }
+    
+    public int getTimeJail(){
+    
+      return timeJail;
+    
+    }
+    
+    public void jailNextTurn(){
+    
+      this.timeJail ++;
+    
     }
    
    
