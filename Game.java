@@ -5,9 +5,22 @@
 import java.util.*;
 
 public class Game{
-
-   public static void getBoard(){
-      //not sure what this is supposed to do but made it anyways 
+   //player track creater call this when you want add a new player
+   public static void makePlayerTrack(Place[] board, ArrayList<String> output){
+      for(int i = 0; i < board.length; i++){
+         String temp = "";
+         for(int j = 0; j < board[i].getName().length(); j++){
+            temp+="_";
+         }
+         output.add(temp);
+      }
+   }
+   //changes position on a track
+   public static void updatePos(Player player, ArrayList<String> track, ArrayList<String> position, int moveAmount, int playerNum){
+         track.set(player.getPos(), position.get(player.getPos()));
+         player.move(moveAmount);
+         track.set(player.getPos(), (position.get(player.getPos()).substring(0,(int)(position.get(player.getPos()).length()/2))+playerNum+position.get(player.getPos()).substring((int)(position.get(player.getPos()).length()/2+1),(int)(position.get(player.getPos()).length()))));
+         
    }
 
    public static void main(String args[]){
@@ -18,7 +31,7 @@ public class Game{
       
       Player playerOne = new Player();
       Player playerTwo = new Player();
-      
+  
       Place squareOne = new Place("Go! 0", null, 0, 0, false);
       Place squareTwo = new Place("Junior Lot", null, 50, 2, true);
       //make railroad
@@ -52,14 +65,13 @@ public class Game{
       Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven};
       Player[] order = {playerOne, playerTwo};
       ArrayList<String> positions = new ArrayList<String>();
-      for(int i = 0; i < board.length; i++){
-         String temp = "";
-         for(int j = 0; j < board[i].getName().length(); j++){
-            temp+="_";
-         }
-         positions.add(temp);
-      }
-      positions.set(0,"1&2");
+      makePlayerTrack(board, positions);
+      ArrayList<String> positionsPOne = new ArrayList<String>();
+      makePlayerTrack(board, positionsPOne);
+      ArrayList<String> positionsPTwo = new ArrayList<String>();
+      makePlayerTrack(board, positionsPTwo);
+      positionsPOne.set(0,"_1_");
+      positionsPTwo.set(0,"_2_");
       int turn = 0;
      //Game loop
       while(!gameOver){
@@ -68,9 +80,11 @@ public class Game{
             System.out.print(board[i].getName()+", ");
          }
          System.out.println(board[board.length-1].getName()+"]");
-         System.out.println(positions);
+         System.out.println(positionsPOne);
+         System.out.println(positionsPTwo);
          System.out.println("What do you want to do player " +(turn%2+1)+"?");
          action = myObj.next();
+         
          //moves player and moves to next turn.
          
          //actions
@@ -81,11 +95,33 @@ public class Game{
             }
             else{
                //needs to have a section that edits player position.
-               //int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
-               int moveAmount= myObj.nextInt();
-               order[turn % 2].move(moveAmount);
-               board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
-               turn++;
+               // use forcemove instead of changing this function
+               int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
+               if(turn%2==0){
+                  updatePos(order[turn%2], positionsPOne, positions, moveAmount, turn%2+1);
+                  board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+                  turn++;
+               }
+               else if(turn%2==1){
+                  updatePos(order[turn%2], positionsPTwo, positions, moveAmount, turn%2+1);
+                  board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+                  turn++;
+               }
+               
+               /*if(turn%2==0){
+                  positionsPOne.set(playerOne.getPos(), positions.get(playerOne.getPos()));
+                  order[turn % 2].move(moveAmount);
+                  positionsPOne.set(playerOne.getPos(), (positions.get(playerOne.getPos()).substring(0,(int)(positions.get(playerOne.getPos()).length()/2))+"1"+positions.get(playerOne.getPos()).substring((int)(positions.get(playerOne.getPos()).length()/2+1),(int)(positions.get(playerOne.getPos()).length()))));
+                  turn++;
+               }
+               else if(turn%2==1){
+                  positionsPTwo.set(playerTwo.getPos(), positions.get(playerTwo.getPos()));
+                  order[turn % 2].move(moveAmount);
+                  positionsPOne.set(playerTwo.getPos(), (positions.get(playerTwo.getPos()).substring(0,(int)(positions.get(playerTwo.getPos()).length()/2))+"1"+positions.get(playerTwo.getPos()).substring((int)(positions.get(playerTwo.getPos()).length()/2+1),(int)(positions.get(playerTwo.getPos()).length()))));
+                  turn++;
+               }*/
+               
+               
             }
          }
          //get money of current player
@@ -108,9 +144,16 @@ public class Game{
          }
          else if(action.toLowerCase().equals("forcemove")){
             int moveAmount = myObj.nextInt();
-            order[turn % 2].move(moveAmount);
-            board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
-            turn++;
+            if(turn%2==0){
+               updatePos(order[turn%2], positionsPOne, positions, moveAmount, turn%2+1);
+               board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+               turn++;
+            }
+            else if(turn%2==1){
+               updatePos(order[turn%2], positionsPTwo, positions, moveAmount, turn%2+1);
+               board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+               turn++;
+            }
          }
          //fail method
          else{
@@ -122,7 +165,8 @@ public class Game{
      
       }
   
-   }  
+   } 
+   
  
 
 }
