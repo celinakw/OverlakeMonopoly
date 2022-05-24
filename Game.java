@@ -31,14 +31,35 @@ public class Game{
       
       Player playerOne = new Player();
       Player playerTwo = new Player();
-      
-      Place squareOne = new Place("Go!",null, 0, 0, false);
-      Place squareTwo = new Place("place 1",null, 300, 100, true);
-      Place squareThree = new Place("place 2",null, 400, 150,true);
-      Place squareFour = new Place("Chance Card 3",null, 0, 0, false, "card");
-      Place squareFive = new Place("Water Works",null, 150, 0, false, "company");
-      Place squareSix = new Place("SRB",null, 0, 0, false, "jail");
-      Place squareSeven= new Place("Go to SRB",null, 0, 0, false, "gojail");
+  
+      Place squareOne = new Place("Go! 0", null, 0, 0, false);
+      Place squareTwo = new Place("Junior Lot", null, 50, 2, true);
+      //make railroad
+      Place squareThree = new Place("Field 1 port-a-potty", null, 200, 25, false, "rairoad");
+      Place squareFour = new Place("Chance Card 1", null, 0, 0, false, "card");
+      Place squareFive = new Place("DEJI", null, 150, 0, false, "company");
+      Place squareSix = new Place("Stairs (from junior lot)", null, 100, 6, true);
+      Place squareSeven= new Place("SRB", null, 0, 0, false, "jail");
+      Place squareEight= new Place("Gola Room", null, 150, 12, true);
+      Place squareNine= new Place("Chance Card 2", null, 0, 0, false, "card");
+      //make railroad
+      Place squareTen= new Place("Humanities Bathroom", null, 200, 25, false, "railroad");
+      Place squareEleven= new Place("College Counseling", null, 170, 14, true);
+      Place squareTwelve= new Place("Mia's Classroom", null, 200, 16, true);
+      Place squareThirteen= new Place("Flagpole", null, 0, 0, false);
+      Place squareFourteen= new Place("Library", null, 250, 18, true);
+      //make railroad
+      Place squareFifteen= new Place("TLC Bathroom", null, 200, 25, false, "railroad");
+      Place squareSixteen= new Place("ASB", null, 150, 0, false, "comapny");
+      Place squareSeventeen= new Place("Student Center", null, 270, 22, true);
+      Place squareEighteen= new Place("Fishbowl", null, 290, 22, true);
+      Place squareNineteen= new Place("Go to SRB", null, 0, 0, false, "gojail");
+      Place squareTwenty= new Place("Gerald's Classroom", null, 300, 26, true);
+      //make railroad
+      Place squareTwentyOne= new Place("MathSci Bathroom", null, 200, 25, false, "railroad");
+      Place squareTwentyTwo= new Place("Chance Card 3", null, 0, 0, false, "card");
+      Place squareTwentyThree= new Place("Idea Lab", null, 350, 35, true);
+      Place squareTwentyFour= new Place("MathSci Conference Room", null, 400, 50, true);
       
   
       Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven};

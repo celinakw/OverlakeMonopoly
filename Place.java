@@ -79,7 +79,7 @@ public class Place{
             play.take(50);
          }
          if(randNum == 1){
-            System.out.println("Overlake cafeteria gave you salmonella. Hospital bills are expensive. Kim Stevens needs a raise after your projectile vomid. School sues.");
+            System.out.println("Overlake cafeteria gave you salmonella. Hospital bills are expensive. Kim Stevens needs a raise after your projectile vomit. School sues.");
             play.take(play.getBank() - 1);
          }
          if(randNum == 2){
@@ -97,7 +97,8 @@ public class Place{
             //play.forceMove(INSERTBOARD LENGTH/ 4 + 1);
          }
       }
-       
+      
+      //Company cards 
       if(this.isSpecial.toLowerCase().equals("company")){
          if(this.owner ==  null){
               System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost);
@@ -133,6 +134,7 @@ public class Place{
          
       }
       
+      //jail
       if(this.isSpecial.toLowerCase().equals("jail")){
       
       
@@ -173,6 +175,43 @@ public class Place{
       
    }
    
+   //Railroad Cards
+   if(this.isSpecial.toLowerCase().equals("railroad")){
+         if(this.owner ==  null){
+              System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost);
+              Scanner myObj = new Scanner(System.in);
+              String response = myObj.nextLine();
+              finished = false;
+              while(finished == false){
+                  if(response.toLowerCase().equals("yes")){
+                     play.take(cost);
+                     this.owner = play;
+                     play.addPlace(this);
+                     finished = true;
+                  }
+                  else if (response.toLowerCase().equals("no")){
+                     finished = true;
+
+                  }
+                  else {
+                     System.out.println("Not a valid response");
+                  }
+              }
+               
+         }
+         else if(this.owner == play){
+ 
+         }
+         else{
+            for(Place a: this.ownPlace()){
+            //fix later (multiply by the number of railroads owned)
+               if(a.isSpecial.toLowerCase().equals("railroad")
+            
+            }
+         }
+         
+      }
+
    public String getName(){
       return this.name;
    }
