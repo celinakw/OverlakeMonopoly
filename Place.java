@@ -89,12 +89,12 @@ public class Place{
          if(randNum == 3){
          //add Game.getBoard 
             System.out.println("Chris wants to give you donuts! You've been moved to Mathsci Conference Room");
-            //play.move(Game.getBoard() - 1 - play.getPos());
+            //play.move(INSERT BOARD LENGTH- 1 - play.getPos());
          }
          if(randNum == 4){
             System.out.println("You were caught cheating, and get sent to SRB.");
             //add jail location and test
-            //play.forceMove(Game.getBoard.length / 4 + 1);
+            //play.forceMove(INSERTBOARD LENGTH/ 4 + 1);
          }
       }
        
