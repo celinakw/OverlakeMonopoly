@@ -40,7 +40,7 @@ public class Game{
       Place squareSixteen= new Place("ASB", null, 150, 0, false, "comapny");
       Place squareSeventeen= new Place("Student Center", null, 270, 22, true);
       Place squareEighteen= new Place("Fishbowl", null, 290, 22, true);
-      Place squareNineteen= new Place("Go to SRB",null, 0, 0, false, "gojail");
+      Place squareNineteen= new Place("Go to SRB", null, 0, 0, false, "gojail");
       Place squareTwenty= new Place("Gerald's Classroom", null, 300, 26, true);
       //make railroad
       Place squareTwentyOne= new Place("MathSci Bathroom", null, 200, 25, false, "railroad");
