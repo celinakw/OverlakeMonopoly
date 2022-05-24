@@ -62,7 +62,8 @@ public class Game{
       Place squareTwentyFour= new Place("MathSci Conference Room", null, 400, 50, true);
       
   
-      Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven};
+      Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven,squareEight,squareNine,squareTen,squareEleven,squareTwelve,squareThirteen,squareFourteen,
+         squareFifteen,squareSixteen,squareSeventeen,squareEighteen,squareNineteen,squareTwenty,squareTwentyOne,squareTwentyTwo,squareTwentyThree,squareTwentyFour};
       Player[] order = {playerOne, playerTwo};
       ArrayList<String> positions = new ArrayList<String>();
       makePlayerTrack(board, positions);
@@ -75,6 +76,7 @@ public class Game{
       int turn = 0;
      //Game loop
       while(!gameOver){
+         //need to change the board to work on a 2d array list probaby or use an abreviation system as the board is huge
          System.out.print("[");
          for(int i = 0; i < board.length-1; i++){
             System.out.print(board[i].getName()+", ");
@@ -95,7 +97,7 @@ public class Game{
             }
             else{
                //needs to have a section that edits player position.
-               // use forcemove instead of changing this function
+               // use forcemove instead of changing this method
                int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
                if(turn%2==0){
                   updatePos(order[turn%2], positionsPOne, positions, moveAmount, turn%2+1);

@@ -172,8 +172,9 @@ public class Place{
       
       }
       
-      
-   }
+   
+
+   
    
    //Railroad Cards
    if(this.isSpecial.toLowerCase().equals("railroad")){
@@ -199,6 +200,7 @@ public class Place{
               }
                
          }
+         /* uncomment it when fixed the own place is a player class method
          else if(this.owner == play){
  
          }
@@ -207,7 +209,7 @@ public class Place{
             //fix later (multiply by the number of railroads owned)
                if(a.isSpecial.toLowerCase().equals("railroad")
             
-            }
+            }*/
          }
          
       }
