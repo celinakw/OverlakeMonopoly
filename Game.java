@@ -42,8 +42,8 @@ public class Game{
       
       
   
-      Place squareOne = new Place("Go! 0", null, 0, 0, false, 1, 0);
-      Place squareTwo = new Place("Junior Lot", null, 50, 2, true);
+      Place squareOne = new Place("Go!", null, 0, 0, false, "go");
+      Place squareTwo = new Place("Junior Lot", null, 50, 2, true, 1, 0);
       //make railroad
       Place squareThree = new Place("Field 1 port-a-potty", null, 200, 25, false, "railroad");
       Place squareFour = new Place("Chance Card 1", null, 0, 0, false, "card");

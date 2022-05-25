@@ -75,7 +75,7 @@ public class Player{
     public void goToJail(){
     
       inJail = true;
-      pos = ;
+      forceMove(6);
     
     }
     
