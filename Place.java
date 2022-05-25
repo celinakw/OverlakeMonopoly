@@ -1,7 +1,3 @@
-
-
-
-
 //Final Project
 //Alec Zoe Felix Celina Gavin
 //Overlake Monopoly
@@ -38,13 +34,22 @@ public class Place{
     }
    
     public void runPlace(Player play){
+      
+      
+       if(isSpecial.equals("no")){
+         System.out.println("You landed on the place, " + this.getName());
+       }
+       else{
+         System.out.println("You landed on, " + this.getName() + ". Which is: " + this.getIsSpecial());
+       }
+       
        if(this.isPlace){
          if(this.owner ==  null){
-              System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost);
+              System.out.println("Do you want to buy " + this.name + "? Cost to buy: " + cost +". Rent is: " + this.rent );
               Scanner myObj = new Scanner(System.in);
-              String response = myObj.nextLine();
               finished = false;
               while(finished == false){
+                  String response = myObj.nextLine();
                   if(response.toLowerCase().equals("yes")){
                      play.take(cost);
                      this.owner = play;
@@ -80,7 +85,13 @@ public class Place{
          }
          if(randNum == 1){
             System.out.println("Overlake cafeteria gave you salmonella. Hospital bills are expensive. Kim Stevens needs a raise after your projectile vomit. School sues.");
-            play.take(play.getBank() - 1);
+            if(play.getBank() == 1){
+               play.take(1);
+            }
+            else{
+               play.take(play.getBank() - 1);
+            }
+            
          }
          if(randNum == 2){
             System.out.println("No more depression! Summer time.");
@@ -93,8 +104,7 @@ public class Place{
          }
          if(randNum == 4){
             System.out.println("You were caught cheating, and get sent to SRB.");
-            //add jail location and test
-            //play.forceMove(INSERTBOARD LENGTH/ 4 + 1);
+            play.goToJail();
          }
       }
       
@@ -153,7 +163,8 @@ public class Place{
             
                if(roll1 == roll2){
                   play.outJail();
-                  System.out.println("Lucky! You are out of jail");
+                  System.out.println("Lucky! You are out of jail. Make your move.");
+                  
                }
                else{
                   System.out.println("Unlucky! You are still in jail.");
@@ -216,6 +227,9 @@ public class Place{
 
    public String getName(){
       return this.name;
+   }
+   public String getIsSpecial(){
+      return this.isSpecial;
    }
  
  }
