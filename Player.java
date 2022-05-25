@@ -9,6 +9,7 @@ public class Player{
     private int pos;
     private boolean inJail;
     private int timeJail;
+    private String name;
     private ArrayList<Place> owned = new ArrayList<Place>();
    
     public Player(){
@@ -35,7 +36,7 @@ public class Player{
     public void move(int num){
    
        for(int i = num; i > 0; i--){
-          if(pos == 6){
+          if(pos == 23){
             pos = 0;
             bank+= 200;
             System.out.println("You passed go! ");
@@ -74,7 +75,7 @@ public class Player{
     public void goToJail(){
     
       inJail = true;
-      pos = 5;
+      pos = ;
     
     }
     
@@ -101,9 +102,15 @@ public class Player{
       this.timeJail ++;
     
     }
+    
+    public String getName(){
+      return name;
+    }
    
    
-   
+    public void changeName(String newName){
+      name = newName;
+    }
  
  
  }
