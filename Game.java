@@ -22,6 +22,7 @@ public class Game{
          track.set(player.getPos(), (position.get(player.getPos()).substring(0,(int)(position.get(player.getPos()).length()/2))+playerNum+position.get(player.getPos()).substring((int)(position.get(player.getPos()).length()/2+1),(int)(position.get(player.getPos()).length()))));
          
    }
+   
 
    public static void main(String args[]){
   
@@ -31,11 +32,20 @@ public class Game{
       
       Player playerOne = new Player();
       Player playerTwo = new Player();
+      
+      System.out.println("Player 1 enter your name");
+      action = myObj.next();
+      playerOne.changeName(action);
+      System.out.println("Player 2 enter your name");
+      action = myObj.next();
+      playerTwo.changeName(action);
+      
+      
   
       Place squareOne = new Place("Go! 0", null, 0, 0, false);
       Place squareTwo = new Place("Junior Lot", null, 50, 2, true);
       //make railroad
-      Place squareThree = new Place("Field 1 port-a-potty", null, 200, 25, false, "rairoad");
+      Place squareThree = new Place("Field 1 port-a-potty", null, 200, 25, false, "railroad");
       Place squareFour = new Place("Chance Card 1", null, 0, 0, false, "card");
       Place squareFive = new Place("DEJI", null, 150, 0, false, "company");
       Place squareSix = new Place("Stairs (from junior lot)", null, 100, 6, true);
@@ -50,7 +60,7 @@ public class Game{
       Place squareFourteen= new Place("Library", null, 250, 18, true);
       //make railroad
       Place squareFifteen= new Place("TLC Bathroom", null, 200, 25, false, "railroad");
-      Place squareSixteen= new Place("ASB", null, 150, 0, false, "comapny");
+      Place squareSixteen= new Place("ASB", null, 150, 0, false, "company");
       Place squareSeventeen= new Place("Student Center", null, 270, 22, true);
       Place squareEighteen= new Place("Fishbowl", null, 290, 22, true);
       Place squareNineteen= new Place("Go to SRB", null, 0, 0, false, "gojail");
@@ -84,7 +94,7 @@ public class Game{
          System.out.println(board[board.length-1].getName()+"]");
          System.out.println(positionsPOne);
          System.out.println(positionsPTwo);
-         System.out.println("What do you want to do player " +(turn%2+1)+"?");
+         System.out.println("What do you want to do " + order[(turn%2)].getName() +"?");
          action = myObj.next();
          
          //moves player and moves to next turn.
@@ -93,11 +103,22 @@ public class Game{
          if(action.toLowerCase().equals("move")){
             if(order[turn % 2].isJail()){
                board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+               if(!(order[turn % 2].isJail())){
+                  int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
+                  if(turn%2==0){
+                     updatePos(order[turn%2], positionsPOne, positions, moveAmount, turn%2+1);
+                     board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+                     turn++;
+                  }
+                  else if(turn%2==1){
+                     updatePos(order[turn%2], positionsPTwo, positions, moveAmount, turn%2+1);
+                     board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
+                     turn++;
+                  }
+               }
                turn++;
             }
             else{
-               //needs to have a section that edits player position.
-               // use forcemove instead of changing this method
                int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
                if(turn%2==0){
                   updatePos(order[turn%2], positionsPOne, positions, moveAmount, turn%2+1);
@@ -125,6 +146,7 @@ public class Game{
                
                
             }
+            System.out.println("You have $" + order[(turn - 1)%2].getBank() + " left in your bank account.");
          }
          //get money of current player
          else if(action.toLowerCase().equals("money")){
@@ -160,6 +182,13 @@ public class Game{
          //fail method
          else{
             System.out.println("Inavlid Command");
+         }
+         
+         if(order[turn % 2].getBank() == 0){
+            gameOver = true;
+         }
+         if(order[(turn + 1) % 2].getBank() == 0){
+            gameOver = true;
          }
          
         
