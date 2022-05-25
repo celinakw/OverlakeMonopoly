@@ -211,16 +211,26 @@ public class Place{
               }
                
          }
-         /* uncomment it when fixed the own place is a player class method
+        
          else if(this.owner == play){
  
          }
          else{
-            for(Place a: this.ownPlace()){
+            int numRailroads = 0;
+            for(Place a: play.ownPlace()){
             //fix later (multiply by the number of railroads owned)
-               if(a.isSpecial.toLowerCase().equals("railroad")
+               if(a.isSpecial.toLowerCase().equals("railroad") {
+               
+                  numRailroads++;
+               
+               }
             
-            }*/
+            }
+            
+            System.out.println("You pay: " + (rent * Math.pow(2, numRailroads)));
+            owner.give(rent * Math.pow(2, numRailroads));
+            play.take(rent * Math.pow(2, numRailroads));
+            
          }
          
       }
