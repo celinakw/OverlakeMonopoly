@@ -221,7 +221,7 @@ public class Place{
             int numRailroads = 0;
             for(Place a: owner.ownPlace()){
             //fix later (multiply by the number of railroads owned)
-               if(a.isSpecial.toLowerCase().equals("railroad") {
+               if(a.isSpecial.toLowerCase().equals("railroad")) {
                
                   numRailroads++;
                
@@ -230,8 +230,8 @@ public class Place{
             }
             
             System.out.println("You pay: " + (rent * Math.pow(2, numRailroads)));
-            owner.give(rent * Math.pow(2, numRailroads));
-            play.take(rent * Math.pow(2, numRailroads));
+            owner.give(rent * (int)(Math.pow(2, numRailroads)));
+            play.take(rent * (int)(Math.pow(2, numRailroads)));
             
          }
          
