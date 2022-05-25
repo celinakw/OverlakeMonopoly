@@ -12,6 +12,8 @@ public class Place{
    private boolean isPlace;
    private String isSpecial = "no";
    private boolean finished = false;
+   private int set;
+   private int numHouses;
    //special place constructor
    public Place(String placeName ,Player person, int costs, int rents, boolean place, String special){
       owner = person;
@@ -23,14 +25,14 @@ public class Place{
       
     }
     //non special constructor
-   public Place(String placeName ,Player person, int costs, int rents, boolean place, int set){
+   public Place(String placeName ,Player person, int costs, int rents, boolean place, int sets, int houses){
       owner = person;
       cost = costs;
       rent = rents;
       name = placeName;
       isPlace = place;
-      
-      
+      set = sets;
+      numHouses = houses;
     }
    
     public void runPlace(Player play){
@@ -217,7 +219,7 @@ public class Place{
          }
          else{
             int numRailroads = 0;
-            for(Place a: play.ownPlace()){
+            for(Place a: owner.ownPlace()){
             //fix later (multiply by the number of railroads owned)
                if(a.isSpecial.toLowerCase().equals("railroad") {
                
@@ -234,15 +236,74 @@ public class Place{
          }
          
       }
-
+      
+      this.house();
+  }
+   
+  public void house(){
+  
+   Scanner sc = new Scanner(System.in);
+  
+   boolean checkAllOwned = true;
+  
+   for(Place a: owner.ownPlace()){
+   
+      if(a.getSet() == this.getSet() && a.getOwner() != owner){
+      
+          checkAllOwned = false;
+          
+          break;
+      
+      }
+   
+   }
+   
+   if(checkAllOwned && numHouses < 4){
+   
+      int housePrice = cost / 2;
+   
+      System.out.println("Do you want to buy a house? It costs " + housePrice);
+      
+      String input = sc.nextLine();
+      
+      if(input.toLowerCase().equals("yes")){
+      
+         owner.take(housePrice);
+         
+         rent *= 3;
+         
+         numHouses++;
+         
+         System.out.println("Rent is now $" + rent);
+      
+      }
+   
+   }
+  
+  
+  }
+   
+   
+   
    public String getName(){
       return this.name;
    }
    public String getIsSpecial(){
       return this.isSpecial;
    }
+   
+   public int getSet(){
+      return this.set;
+   
+   }
+   
+   public Player getOwner(){
+      return this.owner;
+   }
  
  }
+ 
+ 
  
  
 
