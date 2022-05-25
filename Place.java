@@ -23,7 +23,7 @@ public class Place{
       
     }
     //non special constructor
-   public Place(String placeName ,Player person, int costs, int rents, boolean place){
+   public Place(String placeName ,Player person, int costs, int rents, boolean place, int set){
       owner = person;
       cost = costs;
       rent = rents;
