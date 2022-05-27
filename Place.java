@@ -47,7 +47,7 @@ public class Place{
        
        if(this.isPlace){
          if(this.owner ==  null){
-              System.out.println("Do you want to buy " + this.name + "? Cost to buy: " + cost +". Rent is: " + this.rent );
+              System.out.println("Do you want to buy " + this.name + "? Cost to buy: " + cost +". Rent is: " + this.rent + ". \"yes\" or \"no\"");
               Scanner myObj = new Scanner(System.in);
               finished = false;
               while(finished == false){
@@ -64,6 +64,8 @@ public class Place{
                   }
                   else {
                      System.out.println("Not a valid response");
+                     System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost + ". \"yes\" or \"no\"");
+                     response = myObj.nextLine();
                   }
               }
                
@@ -87,11 +89,11 @@ public class Place{
          }
          if(randNum == 1){
             System.out.println("Overlake cafeteria gave you salmonella. Hospital bills are expensive. Kim Stevens needs a raise after your projectile vomit. School sues.");
-            if(play.getBank() == 1){
-               play.take(1);
+            if(play.getBank() <= 200){
+               play.take(play.getBank() - 1);
             }
             else{
-               play.take(play.getBank() - 1);
+               play.take(200);
             }
             
          }
@@ -113,7 +115,7 @@ public class Place{
       //Company cards 
       if(this.isSpecial.toLowerCase().equals("company")){
          if(this.owner ==  null){
-              System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost);
+              System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost + ". \"yes\" or \"no\"");
               Scanner myObj = new Scanner(System.in);
               String response = myObj.nextLine();
               finished = false;
@@ -130,6 +132,9 @@ public class Place{
                   }
                   else {
                      System.out.println("Not a valid response");
+                     System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost + ". \"yes\" or \"no\"");
+                     response = myObj.nextLine();
+
                   }
               }
                
@@ -180,7 +185,7 @@ public class Place{
       
       if(this.isSpecial.toLowerCase().equals("gojail")){
          
-         System.out.println("You moms going to jail. Bye bye.");
+         System.out.println("Your mom's going to jail. Bye bye.");
          play.goToJail();
       
       }
@@ -192,7 +197,7 @@ public class Place{
    //Railroad Cards
    if(this.isSpecial.toLowerCase().equals("railroad")){
          if(this.owner ==  null){
-              System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost);
+              System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost + ". \"yes\" or \"no\"");
               Scanner myObj = new Scanner(System.in);
               String response = myObj.nextLine();
               finished = false;
@@ -209,6 +214,8 @@ public class Place{
                   }
                   else {
                      System.out.println("Not a valid response");
+                     System.out.println("Do you want to buy "+this.name+ "? Cost to buy: " + cost + ". \"yes\" or \"no\"");
+                     response = myObj.nextLine();
                   }
               }
                
@@ -243,38 +250,45 @@ public class Place{
   public void house(){
   
    Scanner sc = new Scanner(System.in);
-  
-   boolean checkAllOwned = true;
-  
-   for(Place a: owner.ownPlace()){
    
-      if(a.getSet() == this.getSet() && a.getOwner() != owner){
-      
-          checkAllOwned = false;
-          
-          break;
+   if(this.getIsSpecial().equals("no") && this.owner.ownPlace().size() > 1){
+   
+      boolean checkAllOwned = true;
+
+  
+      for(Place a: this.owner.ownPlace()){
+        
+         if(a.getSet() == this.getSet() || a.getOwner() != owner){
+         
+             checkAllOwned = false;
+             
+             break;
+         
+         }
       
       }
-   
-   }
-   
-   if(checkAllOwned && numHouses < 4){
-   
-      int housePrice = cost / 2;
-   
-      System.out.println("Do you want to buy a house? It costs " + housePrice);
       
-      String input = sc.nextLine();
+      if(checkAllOwned && numHouses < 4){
       
-      if(input.toLowerCase().equals("yes")){
+         int housePrice = cost / 2;
       
-         owner.take(housePrice);
+         System.out.println("Do you want to buy a house? It costs " + housePrice);
          
-         rent *= 3;
+         String input = sc.nextLine();
          
-         numHouses++;
+         if(input.toLowerCase().equals("yes")){
          
-         System.out.println("Rent is now $" + rent);
+            owner.take(housePrice);
+            
+            rent *= 3;
+            
+            numHouses++;
+            
+            System.out.println("Rent is now $" + rent);
+            
+            System.out.println("You now have $" + this.owner.getBank());
+         
+         }
       
       }
    
