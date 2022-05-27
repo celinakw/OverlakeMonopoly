@@ -33,13 +33,13 @@ public class Game{
       Player playerOne = new Player();
       Player playerTwo = new Player();
       
-      System.out.println("Player 1 enter your name");
-      action = myObj.next();
+      System.out.println("Each of you start with $1500");
+      System.out.println("Player 1 enter your name: ");
+      action = myObj.nextLine();
       playerOne.changeName(action);
-      System.out.println("Player 2 enter your name");
-      action = myObj.next();
-      playerTwo.changeName(action);
-      
+      System.out.println("Player 2 enter your name: ");
+      action = myObj.nextLine();
+      playerTwo.changeName(action);      
       
   
       Place squareOne = new Place("Go!", null, 0, 0, false, "go");
@@ -58,7 +58,7 @@ public class Game{
       Place squareEleven= new Place("College Counseling", null, 170, 14, true, 2, 0);
       Place squareTwelve= new Place("Mia's Classroom", null, 200, 16, true, 2, 0);
       
-      Place squareThirteen= new Place("Flagpole", null, 0, 0, false);
+      Place squareThirteen= new Place("Flagpole", null, 0, 0, false, "flagpole");
       Place squareFourteen= new Place("Library", null, 250, 18, true, 3, 0);
       //make railroad
       Place squareFifteen= new Place("TLC Bathroom", null, 200, 25, false, "railroad");
@@ -97,8 +97,13 @@ public class Game{
          System.out.println(board[board.length-1].getName()+"]");
          System.out.println(positionsPOne);
          System.out.println(positionsPTwo);
-         System.out.println("What do you want to do " + order[(turn%2)].getName() +"?");
-         action = myObj.next();
+         System.out.println();
+         System.out.println("What do you want to do " + order[(turn%2)].getName() +"? Please enter ");
+         System.out.print("\"Move\": roll the dice and change position");
+         System.out.println("    \"Position\": check where you are");
+         System.out.println("\"Owned\": check what you own");
+         System.out.println("You have: $" + order[turn % 2].getBank());
+         action = myObj.nextLine();
          
          //moves player and moves to next turn.
          
@@ -107,7 +112,7 @@ public class Game{
             if(order[turn % 2].isJail()){
                board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
                if(!(order[turn % 2].isJail())){
-                  int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
+                  int moveAmount = (int)(Math.random()*3)+(int)(Math.random()*3)+2;
                   if(turn%2==0){
                      updatePos(order[turn%2], positionsPOne, positions, moveAmount, turn%2+1);
                      board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
@@ -122,7 +127,7 @@ public class Game{
                turn++;
             }
             else{
-               int moveAmount = (int)(Math.random()*6)+(int)(Math.random()*6)+2;
+               int moveAmount = (int)(Math.random()*3)+(int)(Math.random()*3)+2;
                if(turn%2==0){
                   updatePos(order[turn%2], positionsPOne, positions, moveAmount, turn%2+1);
                   board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
@@ -134,30 +139,20 @@ public class Game{
                   turn++;
                }
                
-               /*if(turn%2==0){
-                  positionsPOne.set(playerOne.getPos(), positions.get(playerOne.getPos()));
-                  order[turn % 2].move(moveAmount);
-                  positionsPOne.set(playerOne.getPos(), (positions.get(playerOne.getPos()).substring(0,(int)(positions.get(playerOne.getPos()).length()/2))+"1"+positions.get(playerOne.getPos()).substring((int)(positions.get(playerOne.getPos()).length()/2+1),(int)(positions.get(playerOne.getPos()).length()))));
-                  turn++;
-               }
-               else if(turn%2==1){
-                  positionsPTwo.set(playerTwo.getPos(), positions.get(playerTwo.getPos()));
-                  order[turn % 2].move(moveAmount);
-                  positionsPOne.set(playerTwo.getPos(), (positions.get(playerTwo.getPos()).substring(0,(int)(positions.get(playerTwo.getPos()).length()/2))+"1"+positions.get(playerTwo.getPos()).substring((int)(positions.get(playerTwo.getPos()).length()/2+1),(int)(positions.get(playerTwo.getPos()).length()))));
-                  turn++;
-               }*/
-               
-               
             }
             System.out.println("You have $" + order[(turn - 1)%2].getBank() + " left in your bank account.");
+            System.out.println();
          }
          //get money of current player
          else if(action.toLowerCase().equals("money")){
             System.out.println(order[turn%2].getBank());
+            
+            System.out.println();
          }
          //tester method
          else if(action.toLowerCase().equals("position")){
             System.out.println(order[turn%2].getPos());
+            System.out.println();
          }
          //prints all owned properties 
          else if (action.toLowerCase().equals("owned")){
@@ -166,7 +161,15 @@ public class Game{
                //broken adds an extra space and might want to be re formated
                System.out.print(order[turn%2].ownPlacePosition(i).getName()+" ");
             }
-            System.out.print("]");
+            
+            if(order[turn % 2].ownPlace().size() == 0){
+            
+               System.out.print("none owned");
+            
+            }
+            System.out.println("]");
+            
+            System.out.println();
             
          }
          else if(action.toLowerCase().equals("forcemove")){
@@ -184,7 +187,9 @@ public class Game{
          }
          //fail method
          else{
-            System.out.println("Inavlid Command");
+            System.out.println("Invalid Command");
+            
+            System.out.println();
          }
          
          if(order[turn % 2].getBank() == 0){
@@ -193,15 +198,10 @@ public class Game{
          if(order[(turn + 1) % 2].getBank() == 0){
             gameOver = true;
          }
-         
-        
-         
      
       }
   
    } 
    
- 
-
 }
 
