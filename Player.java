@@ -88,6 +88,7 @@ public class Player{
     public void outJail(){
     
       inJail = false;
+      timeJail = 0;
       
     }
     
@@ -111,6 +112,8 @@ public class Player{
     public void changeName(String newName){
       name = newName;
     }
+    
+
  
  
  }
