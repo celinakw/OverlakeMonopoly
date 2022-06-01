@@ -73,7 +73,6 @@ public class Game{
       Place squareTwentyTwo= new Place("Chance Card 3", null, 0, 0, false, "card");
       Place squareTwentyThree= new Place("Idea Lab", null, 350, 35, true, 4, 0,"boogie");
       Place squareTwentyFour= new Place("MathSci Conference Room", null, 400, 50, true, 4, 0,"boogie");
-      Place squareTwentyFive= new Place("Matt Hovatt's House", null, 500, 100, true, 4, 0, "boogie");
       
   
       Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven,squareEight,squareNine,squareTen,squareEleven,squareTwelve,squareThirteen,squareFourteen,
@@ -91,13 +90,153 @@ public class Game{
      //Game loop
       while(!gameOver){
          //need to change the board to work on a 2d array list probaby or use an abreviation system as the board is huge
-         System.out.print("[");
+         /*System.out.print("[");
          for(int i = 0; i < board.length-1; i++){
             System.out.print(board[i].getName()+", ");
          }
-         System.out.println(board[board.length-1].getName()+"]");
-         System.out.println(positionsPOne);
-         System.out.println(positionsPTwo);
+         System.out.println(board[board.length-1].getName()+"]");*/
+         
+          int xValOne = 0;
+            
+          int yValOne = 0;
+         
+            int rowOne = playerOne.getPos() / 6;
+            
+            int placeOnRowOne = playerOne.getPos() % 6;
+         
+            if(rowOne == 0){
+            
+               yValOne = 0;
+               
+               xValOne = placeOnRowOne;
+            
+            }
+            
+            else if(rowOne == 1){
+            
+               xValOne = 6;
+               
+               yValOne = placeOnRowOne;
+            
+            }
+            
+            else if(rowOne == 2){
+            
+               yValOne = 6;
+               
+               xValOne = 6 - placeOnRowOne;
+            
+            }
+            
+            else if(rowOne == 3){
+            
+               xValOne = 0;
+               
+               yValOne = 6 - placeOnRowOne;
+            
+            }
+
+         
+         int xValTwo = 0;
+         
+         int yValTwo = 0;
+         
+          int rowTwo = playerTwo.getPos() / 6;
+            
+            int placeOnRowTwo = playerTwo.getPos() % 6;
+                
+            if(rowTwo == 0){
+            
+               yValTwo = 0;
+               
+               xValTwo = placeOnRowTwo;
+            
+            }
+            
+            else if(rowTwo == 1){
+            
+               xValTwo = 6;
+               
+               yValTwo = placeOnRowTwo;
+           
+            }
+            
+            else if(rowTwo == 2){
+            
+               yValTwo = 6;
+               
+               xValTwo = 6 - placeOnRowTwo;
+            
+            }
+            
+            else if(rowTwo == 3){
+            
+               xValTwo = 0;
+               
+               yValTwo = 6 - placeOnRowTwo;
+            
+            }
+         
+         for(int i = 0; i < 7; i++){
+         
+            for(int k = 0; k < 7; k++){
+            
+               if(i == yValOne && k == xValOne){
+               
+                  System.out.print(1 + "   ");
+               
+               }
+               
+               else if(i == 0 || i == 6 || k == 0 || k == 6){
+               
+                  System.out.print("___ ");
+               
+               }
+               
+               else{
+               
+                  System.out.print("    ");
+               
+               }
+            
+            }
+            
+            System.out.println();
+            
+         }
+         
+         System.out.println();
+         
+         for(int i = 0; i < 7; i++){
+         
+            for(int k = 0; k < 7; k++){
+            
+               if(i == yValTwo && k == xValTwo){
+               
+                  System.out.print(2 + "   ");
+               
+               }
+               
+               else if(i == 0 || i == 6 || k == 0 || k == 6){
+               
+                  System.out.print("___ ");
+               
+               }
+               
+               else{
+               
+                  System.out.print("    ");
+               
+               }
+            
+            }
+            
+            System.out.println();
+            
+         }
+         
+        /* System.out.println(positionsPOne);
+         System.out.println(positionsPTwo);*/
          System.out.println();
          System.out.println("What do you want to do " + order[(turn%2)].getName() +"? Please enter ");
          System.out.print("\"Move\": roll the dice and change position");
@@ -207,4 +346,3 @@ public class Game{
    } 
    
 }
-
