@@ -298,6 +298,7 @@ public class Game{
 
 
 
+
         Place[] board = {
             squareOne,
             squareTwo,
@@ -522,6 +523,31 @@ public class Game{
 
     }
 /*
+
+      
+  
+      Place[] board = {squareOne, squareTwo, squareThree, squareFour, squareFive, squareSix, squareSeven,squareEight,squareNine,squareTen,squareEleven,squareTwelve,squareThirteen,squareFourteen,
+         squareFifteen,squareSixteen,squareSeventeen,squareEighteen,squareNineteen,squareTwenty,squareTwentyOne,squareTwentyTwo,squareTwentyThree,squareTwentyFour};
+      Player[] order = {playerOne, playerTwo};
+      ArrayList<String> positions = new ArrayList<String>();
+      makePlayerTrack(board, positions);
+      ArrayList<String> positionsPOne = new ArrayList<String>();
+      makePlayerTrack(board, positionsPOne);
+      ArrayList<String> positionsPTwo = new ArrayList<String>();
+      makePlayerTrack(board, positionsPTwo);
+      positionsPOne.set(0,"_1_");
+      positionsPTwo.set(0,"_2_");
+      int turn = 0;
+     //Game loop
+      while(!gameOver){
+         //need to change the board to work on a 2d array list probaby or use an abreviation system as the board is huge
+         /*System.out.print("[");
+         for(int i = 0; i < board.length-1; i++){
+            System.out.print(board[i].getName()+", ");
+         }
+         System.out.println(board[board.length-1].getName()+"]");*/
+        /* 
+
           int xValOne = 0;
             
           int yValOne = 0;
