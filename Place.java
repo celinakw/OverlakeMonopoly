@@ -72,12 +72,79 @@ public class Place{
                
          }
          else if(this.owner == play){
- 
+         
+            int counter = 0;
+            for(Place item : (this.owner).ownPlace()){
+               if(item.getMono().equals(this.getMono())){
+               counter++;
+               }
+            }
+            if(counter == 3){
+               Scanner myObj = new Scanner(System.in);
+               
+               int housePrice = cost;
+               
+               if(numHouses == 3){
+                  System.out.println("Do you want to buy a hotel? It costs " + housePrice);
+         
+                  String input = myObj.nextLine();
+         
+                  if(input.toLowerCase().equals("yes")){
+         
+                     owner.take(housePrice);
+            
+                     rent *= 3;
+            
+                     numHouses++;
+            
+                     System.out.println("Rent is now $" + rent);
+            
+                     System.out.println("You now have $" + this.owner.getBank());
+            
+                  }
+               }
+               
+               else{
+               
+                  System.out.println("Do you want to buy a house? It costs " + housePrice);
+         
+                  String input = myObj.nextLine();
+         
+                  if(input.toLowerCase().equals("yes")){
+         
+                     owner.take(housePrice);
+            
+                     rent *= 2;
+            
+                     numHouses++;
+            
+                     System.out.println("Rent is now $" + rent);
+            
+                     System.out.println("You now have $" + this.owner.getBank());
+            
+                  }
+
+               }
+            }
          }
          else{
-            System.out.println("You landed on " + owner.getName() +"'s house and must pay rent.");
-            play.take(rent);
-            owner.give(rent);
+            int counter = 0;
+            for(Place item : (this.owner).ownPlace()){
+               if(item.getMono().equals(this.getMono())){
+                  counter++;
+               }
+            }
+            if(counter == 3){
+               System.out.println("You landed on " + owner.getName() +"'s monopoly and must pay rent: " + rent);
+               play.take(rent * 3);
+               owner.give(rent * 3);
+            }
+            else{
+               System.out.println("You landed on " + owner.getName() +"'s house and must pay rent: " + rent);
+               play.take(rent);
+               owner.give(rent);
+            }
+
          }
        }
 
@@ -258,10 +325,9 @@ public class Place{
          
       }
       
-      //this.house();
   }
    
-  public void house(){
+  /*public void house(){
   
    Scanner sc = new Scanner(System.in);
    
@@ -309,7 +375,7 @@ public class Place{
    }
   
   
-  }
+  }*/
    
    
    
@@ -328,10 +394,18 @@ public class Place{
    public Player getOwner(){
       return this.owner;
    }
+   
+   public String getMono(){
+      return monopolies;
+   
+   }
  
  }
  
  
+ 
+ 
+
  
  
 
