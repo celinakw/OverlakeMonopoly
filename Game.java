@@ -95,7 +95,7 @@ public class Game{
             System.out.print(board[i].getName()+", ");
          }
          System.out.println(board[board.length-1].getName()+"]");*/
-         
+        /* 
           int xValOne = 0;
             
           int yValOne = 0;
@@ -234,7 +234,7 @@ public class Game{
             System.out.println();
             
          }
-         
+         */
         /* System.out.println(positionsPOne);
          System.out.println(positionsPTwo);*/
          System.out.println();
