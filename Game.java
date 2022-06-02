@@ -203,9 +203,7 @@ public class Game {
         }
 
     
-
-
-    public static void main(String args[]) {
+public static void main(String args[]) {
 
         Scanner myObj = new Scanner(System.in);
         String action;
@@ -224,47 +222,6 @@ public class Game {
 
 
         Place squareOne = new Place("Go!", null, 0, 0, false, "go");
-
-public class Game{
-   //player track creater call this when you want add a new player
-   public static void makePlayerTrack(Place[] board, ArrayList<String> output){
-      for(int i = 0; i < board.length; i++){
-         String temp = "";
-         for(int j = 0; j < board[i].getName().length(); j++){
-            temp+="_";
-         }
-         output.add(temp);
-      }
-   }
-   //changes position on a track
-   public static void updatePos(Player player, ArrayList<String> track, ArrayList<String> position, int moveAmount, int playerNum){
-         track.set(player.getPos(), position.get(player.getPos()));
-         player.move(moveAmount);
-         track.set(player.getPos(), (position.get(player.getPos()).substring(0,(int)(position.get(player.getPos()).length()/2))+playerNum+position.get(player.getPos()).substring((int)(position.get(player.getPos()).length()/2+1),(int)(position.get(player.getPos()).length()))));
-         
-   }
-   
-
-   public static void main(String args[]){
-  
-      Scanner myObj = new Scanner(System.in);
-      String action;
-      boolean gameOver = false;
-      
-      Player playerOne = new Player();
-      Player playerTwo = new Player();
-      
-      System.out.println("Each of you start with $1500");
-      System.out.println("Player 1 enter your name: ");
-      action = myObj.nextLine();
-      playerOne.changeName(action);
-      System.out.println("Player 2 enter your name: ");
-      action = myObj.nextLine();
-      playerTwo.changeName(action);      
-      
-  
-      Place squareOne = new Place("Go!", null, 0, 0, false, "go");
-
       Place squareTwo = new Place("Junior Lot", null, 50, 2, true, 1, 0,"useless");
       //make railroad
       Place squareThree = new Place("Field 1 port-a-potty", null, 200, 25, false, "railroad");
@@ -295,8 +252,6 @@ public class Game{
       Place squareTwentyTwo= new Place("Chance Card 3", null, 0, 0, false, "card");
       Place squareTwentyThree= new Place("Idea Lab", null, 350, 35, true, 4, 0,"boogie");
       Place squareTwentyFour= new Place("MathSci Conference Room", null, 400, 50, true, 4, 0,"boogie");
-
-
 
 
         Place[] board = {
@@ -394,7 +349,7 @@ public class Game{
             String temp = "";
 
             for (int a = 0; a < gameBoard[8][x + 3].length(); a++) {
-                temp += "_";
+                temp += " ";
             }
             gameBoard[3][x + 3] = temp;
             gameBoard[4][x + 3] = temp;
@@ -522,6 +477,10 @@ public class Game{
         }
 
     }
+
+
+
+}
 /*
 
       
