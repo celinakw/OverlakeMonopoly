@@ -26,7 +26,7 @@ public class Place{
       
     }
     //non special constructor
-   public Place(String placeName ,Player person, int costs, int rents, boolean place, int sets, int houses, String mono){
+   public Place(String placeName ,Player person, int costs, int rents, boolean place, int sets, int houses, String special){
       owner = person;
       cost = costs;
       rent = rents;
@@ -34,7 +34,7 @@ public class Place{
       isPlace = place;
       set = sets;
       numHouses = houses;
-      monopolies = mono;
+      isSpecial = special;
     }
    
     public void runPlace(Player play){
@@ -46,8 +46,53 @@ public class Place{
        else{
          System.out.println("You landed on, " + this.getName() + ". Which is: " + this.getIsSpecial());
        }
-       
-       if(this.isPlace){
+
+       //Chance cards
+       if(this.isSpecial.toLowerCase().equals("card")){
+         double randNum = (Math.random() * 5);
+
+         if(randNum < 1){
+            System.out.println("You fail ap calc exam, Rhonda wants 50 dollars back. ");
+            play.take(50);
+         }
+         else if(randNum < 1.25){
+            System.out.println("Overlake cafeteria gave you salmonella. Hospital bills are expensive. Kim Stevens needs a raise after your projectile vomit. School sues.");
+            if(play.getBank() <= 1){
+               play.take(1);
+            }
+            else{
+               play.take(play.getBank()-1);
+            }
+            
+         }
+         else if(randNum < 1.5 ){
+            System.out.println("No more depression! Summer time.");
+            play.give(1000);
+         }
+         else if(randNum < 1.6){
+            System.out.println("u lost.");
+            play.take(play.getBank());
+         }
+         else if(randNum < 3){
+         //add Game.getBoard 
+            System.out.println("Chris wants to give you donuts! You've been moved to Mathsci Conference Room");
+            play.forceMove(23 - play.getPos());
+            //play.move(INSERT BOARD LENGTH- 1 - play.getPos());
+         }
+         else if(randNum < 4){
+            System.out.println("You were caught cheating, and get sent to SRB.");
+            play.goToJail();
+         }
+         else if(randNum < 5){
+         //fix this and the one above 
+            System.out.println("Your computer died, you go to the TLC tech center, but they break your computer, and you must pay $500");
+            play.take(500);
+            play.forceMove(16);
+            //play.move(INSERT BOARD LENGTH- 1 - play.getPos());
+         }
+      }
+      
+      if(this.isPlace){
          if(this.owner ==  null){
               System.out.println("Do you want to buy " + this.name + "? Cost to buy: " + cost +". Rent is: " + this.rent + ". \"yes\" or \"no\"");
               Scanner myObj = new Scanner(System.in);
@@ -80,49 +125,6 @@ public class Place{
             owner.give(rent);
          }
        }
-
-       //Chance cards
-       if(this.isSpecial.toLowerCase().equals("card")){
-         double randNum = (Math.random() * 5);
-
-         if(randNum < 1){
-            System.out.println("You fail ap calc exam, Rhonda wants 50 dollars back. ");
-            play.take(50);
-         }
-         else if(randNum < 1.25){
-            System.out.println("Overlake cafeteria gave you salmonella. Hospital bills are expensive. Kim Stevens needs a raise after your projectile vomit. School sues.");
-            if(play.getBank() <= 1){
-               play.take(1);
-            }
-            else{
-               play.take(play.getBank()-1);
-            }
-            
-         }
-         else if(randNum < 1.5 ){
-            System.out.println("No more depression! Summer time.");
-            play.give(1000);
-         }
-         else if(randNum < 1.6){
-            System.out.println("u lost.");
-            play.take(play.getBank());
-         }
-         else if(randNum < 3){
-         //add Game.getBoard 
-            System.out.println("Chris wants to give you donuts! You've been moved to Mathsci Conference Room");
-            //play.move(INSERT BOARD LENGTH- 1 - play.getPos());
-         }
-         else if(randNum < 4){
-            System.out.println("You were caught cheating, and get sent to SRB.");
-            play.goToJail();
-         }
-         else if(randNum < 5){
-         //fix this and the one above 
-            System.out.println("Your computer died, you go to the TLC tech center, but they break your computer, and you must pay $500");
-            play.take(500);
-            //play.move(INSERT BOARD LENGTH- 1 - play.getPos());
-         }
-      }
       
       //Company cards 
       if(this.isSpecial.toLowerCase().equals("company")){
