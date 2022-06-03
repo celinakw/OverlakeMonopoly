@@ -128,8 +128,145 @@ public class Game {
         
         //Game loop
         while (!gameOver) {
+             int xValOne = 0;
+            
+            int yValOne = 0;
+         
+            int rowOne = playerOne.getPos() / 6;
+            
+            int placeOnRowOne = playerOne.getPos() % 6;
+         
+            if(rowOne == 0){
+            
+               yValOne = 0;
+               
+               xValOne = placeOnRowOne;
+            
+            }
+            
+            else if(rowOne == 1){
+            
+               xValOne = 6;
+               
+               yValOne = placeOnRowOne;
+            
+            }
+            
+            else if(rowOne == 2){
+            
+               yValOne = 6;
+               
+               xValOne = 6 - placeOnRowOne;
+            
+            }
+            
+            else if(rowOne == 3){
+            
+               xValOne = 0;
+               
+               yValOne = 6 - placeOnRowOne;
+            
+            }
+         
+         int xValTwo = 0;
+         
+         int yValTwo = 0;
+         
+          int rowTwo = playerTwo.getPos() / 6;
+            
+            int placeOnRowTwo = playerTwo.getPos() % 6;
+                
+            if(rowTwo == 0){
+            
+               yValTwo = 0;
+               
+               xValTwo = placeOnRowTwo;
+            
+            }
+            
+            else if(rowTwo == 1){
+            
+               xValTwo = 6;
+               
+               yValTwo = placeOnRowTwo;
+           
+            }
+            
+            else if(rowTwo == 2){
+            
+               yValTwo = 6;
+               
+               xValTwo = 6 - placeOnRowTwo;
+            
+            }
+            
+            else if(rowTwo == 3){
+            
+               xValTwo = 0;
+               
+               yValTwo = 6 - placeOnRowTwo;
+            
+            }
+         
+         for(int i = 0; i < 7; i++){
+         
+            for(int k = 0; k < 7; k++){
+            
+               if(i == yValOne && k == xValOne){
+               
+                  System.out.print(1 + "__ ");
+               
+               }
+               
+               else if(i == 0 || i == 6 || k == 0 || k == 6){
+               
+                  System.out.print("___ ");
+               
+               }
+               
+               else{
+               
+                  System.out.print("    ");
+               
+               }
+            
+            }
+            
+            System.out.println();
+            
+         }
+         
+         System.out.println();
+         
+         for(int i = 0; i < 7; i++){
+         
+            for(int k = 0; k < 7; k++){
+            
+               if(i == yValTwo && k == xValTwo){
+               
+                  System.out.print(2 + "__ ");
+               
+               }
+               
+               else if(i == 0 || i == 6 || k == 0 || k == 6){
+               
+                  System.out.print("___ ");
+               
+               }
+               
+               else{
+               
+                  System.out.print("    ");
+               
+               }
+            
+            }
+            
+            System.out.println();
+            
+         }
             //need to change the board to work on a 2d array list probaby or use an abreviation system as the board is huge
-            for (int i = 0; i < gameBoard.length; i++) {
+            /*for (int i = 0; i < gameBoard.length; i++) {
                 System.out.print("|");
                 for (int j = 0; j < gameBoard[i].length; j++) {
                     System.out.print(gameBoard[i][j] + "|");
@@ -139,8 +276,16 @@ public class Game {
             }
 
             System.out.println(positionsPOne);
-            System.out.println(positionsPTwo);
-            System.out.println("What do you want to do " + order[(turn % 2)].getName() + "?");
+            System.out.println(positionsPTwo);*/
+            System.out.println();
+            System.out.println(order[(turn % 2)].getName() + "! You're on " + board[order[turn % 2].getPos()].getName());
+            
+            System.out.println();
+            System.out.println("What do you want to do?");
+            System.out.println("\"move\": roll dice and move");
+            System.out.println("\"money\": check how much money you have");
+            System.out.println("\"position\": check your position");
+            System.out.println("\"owned\": check all your properties");
             action = myObj.next();
 
             //moves player and moves to next turn.
@@ -200,7 +345,7 @@ public class Game {
             }
             //tester method
             else if (action.toLowerCase().equals("position")) {
-                System.out.println(order[turn % 2].getPos());
+                System.out.println("You are on: " + board[order[turn % 2].getPos()].getName());
             }
             //prints all owned properties 
             else if (action.toLowerCase().equals("owned")) {

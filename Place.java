@@ -140,7 +140,7 @@ public class Place{
                owner.give(rent * 3);
             }
             else{
-               System.out.println("You landed on " + owner.getName() +"'s house and must pay rent: " + rent);
+               System.out.println("You landed on " + owner.getName() +"'s property and must pay rent: " + rent);
                play.take(rent);
                owner.give(rent);
             }
