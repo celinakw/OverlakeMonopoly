@@ -23,6 +23,358 @@ public class Game {
         track.set(player.getPos(), (position.get(player.getPos()).substring(0, (int)(position.get(player.getPos()).length() / 2)) + playerNum + position.get(player.getPos()).substring((int)(position.get(player.getPos()).length() / 2 + 1), (int)(position.get(player.getPos()).length()))));
 
     }
+    public static void updatePos2D(String[][] board, Player player, int moveAmount, int playerNum) {
+        if(playerNum==1){
+            if((player.getPos()+moveAmount)==0){
+                
+                if(Math.floor(player.getPos()/6)==3){
+                    System.out.println("Channel 3");
+                    System.out.println(board[9-(player.getPos()-18)][1]);
+                    board[9-(player.getPos()-18)][1]="_";
+                    
+                }
+                else if(Math.floor(player.getPos()/6)==2){
+                    System.out.println("Channel 2");
+                    board[9][9-(player.getPos()-12)]=board[1][9-(player.getPos()-12)];
+                }
+                else if(Math.floor(player.getPos()/6)==1){
+                    System.out.println("Channel 1");
+                    board[1+(player.getPos()-6)][9]="_";
+                }
+                else if(Math.floor(player.getPos()/6)==0){
+                    System.out.println("Channel 0");
+                    board[1][1+player.getPos()]=board[9][1+(player.getPos())];
+                    
+                }
+                board[1][1]="1";
+
+            }
+            else if((player.getPos()+moveAmount)==18){
+                board[9][1]="1";
+            }
+            else if(player.getPos()+moveAmount==12){
+                board[9][9]="1";
+            }
+            else if(player.getPos()+moveAmount==6){
+                board[1][9]="1";
+                if(Math.floor(player.getPos()/6)==3){
+                    System.out.println("Channel 3");
+                    System.out.println(board[9-(player.getPos()-18)][1]);
+                    board[9-(player.getPos()-18)][1]="_";
+                    
+                }
+                else if(Math.floor(player.getPos()/6)==2){
+                    System.out.println("Channel 2");
+                    board[9][9-(player.getPos()-12)]=board[1][9-(player.getPos()-12)];
+                }
+                else if(Math.floor(player.getPos()/6)==1){
+                    System.out.println("Channel 1");
+                    board[1+(player.getPos()-6)][9]="_";
+                }
+                else if(Math.floor(player.getPos()/6)==0){
+                    System.out.println("Channel 0");
+                    board[1][1+player.getPos()]=board[9][1+(player.getPos())];
+                }
+            }
+            else{
+                if(((player.getPos()+moveAmount)/6)>=3){
+                    System.out.println(Math.floor(player.getPos()/6));
+                    
+                    board[(9-moveAmount)][1]="1";
+                    if(Math.floor(player.getPos()/6)==3){
+                        System.out.println("Channel 3");
+                        System.out.println(board[9-(player.getPos()-18)][1]);
+                        board[9-(player.getPos()-18)][1]="_";
+                        
+                    }
+                    else if(Math.floor(player.getPos()/6)==2){
+                        System.out.println("Channel 2");
+                        board[9][9-(player.getPos()-12)]=board[1][9-(player.getPos()-12)];
+                    }
+                    else if(Math.floor(player.getPos()/6)==1){
+                        System.out.println("Channel 1");
+                        board[1+(player.getPos()-6)][9]="_";
+                    }
+                    else if(Math.floor(player.getPos()/6)==0){
+                        System.out.println("Channel 0");
+                        board[1][1+player.getPos()]=board[9][1+(player.getPos())];
+                    }
+                }
+                else if(((player.getPos()+moveAmount)/6)>=2){
+
+                    board[9][9-moveAmount]=board[1][2+(player.getPos()-12)].substring(0,board[1][2+(player.getPos()-12)].length()/2)+playerNum+board[1][2+(player.getPos()-12)].substring(board[1][2+(player.getPos()-12)].length()/2);
+                        if(board[9][9-moveAmount].length()<board[1][2+(player.getPos()-12)].length()){
+                            board[9][9-moveAmount]+="_";
+                            System.out.println("Extending");
+                        }
+                        else if(board[9][9-moveAmount].length()>board[1][2+(player.getPos()-12)].length()){
+                            board[9][9-moveAmount].substring(board[9][9-moveAmount].length()-2);
+                            System.out.println("Removing");
+                        }
+                    if(Math.floor(player.getPos()/6)==3){
+                        System.out.println("Channel 3");
+                        System.out.println(board[9-(player.getPos()-12)][1]);
+                        board[9-(player.getPos()-18)][1]="_";
+                        
+                    }
+                    else if(Math.floor(player.getPos()/6)==2){
+                        System.out.println("Channel 2");
+                        board[9][9-(player.getPos()-12)]=board[1][9-(player.getPos()-12)];
+                        
+                    }
+                    else if(Math.floor(player.getPos()/6)==1){
+                        System.out.println("Channel 1");
+                        board[1+(player.getPos()-6)][9]="_";
+                    }
+                    else if(Math.floor(player.getPos()/6)==0){
+                        System.out.println("Channel 0");
+                        board[1][1+player.getPos()]=board[9][1+(player.getPos())];
+                    }
+                }
+                else if(((player.getPos()+moveAmount)/6)>=1){
+                    board[9][1+moveAmount]="1";
+                    
+                    if(Math.floor(player.getPos()/6)==3){
+                        System.out.println("Channel 3");
+                        System.out.println(board[9-(player.getPos())][1]);
+                        board[9-(player.getPos())][1]="_";
+                        
+                    }
+                    else if(Math.floor(player.getPos()/6)==2){
+                        System.out.println("Channel 2");
+                        board[1][1+(player.getPos())]=board[1][1+(player.getPos())];
+                        
+                    }
+                    else if(Math.floor(player.getPos()/6)==1){
+                        System.out.println("Channel 1");
+                        board[1+(player.getPos())][9]="_";
+                    }
+                    else if(Math.floor(player.getPos()/6)==0){
+                        System.out.println("Channel 0");
+                        board[1][1+player.getPos()]=board[9][1+(player.getPos())];
+                        board[1][2+player.getPos()]=board[9][2+(player.getPos())];
+                    }
+            }
+            else if(((player.getPos()+moveAmount)/6)>=0){
+                
+                board[1][2+moveAmount+player.getPos()]=board[1][2+(moveAmount+player.getPos())].substring(0,board[1][2+(moveAmount+player.getPos())].length()/2)+playerNum+board[1][2+(moveAmount+player.getPos())].substring(board[1][2+(moveAmount+player.getPos())].length()/2);
+                while(board[1][2+moveAmount+player.getPos()].length()!=board[9][2+moveAmount+player.getPos()].length()){
+                    if(board[1][2+moveAmount+player.getPos()].length()>board[9][2+moveAmount+player.getPos()].length()){
+                        board[1][2+moveAmount+player.getPos()]=board[1][2+moveAmount+player.getPos()].substring(0,board[1][2+moveAmount+player.getPos()].length()-1);
+                    }
+                    else if(board[1][2+moveAmount].length()<board[9][2+moveAmount].length()){
+                        board[1][2+moveAmount]+="_";
+                    }
+
+                    
+                }
+                
+                    
+                if(Math.floor(player.getPos()/6)==3){
+                    System.out.println("Channel 3");
+                    System.out.println(board[9-(player.getPos())][1]);
+                    board[9-(player.getPos())][1]="_";
+                    
+                }
+                else if(Math.floor(player.getPos()/6)==2){
+                    System.out.println("Channel 2");
+                    board[1][1+(player.getPos())]=board[1][1+(player.getPos())];
+                    
+                }
+                else if(Math.floor(player.getPos()/6)==1){
+                    System.out.println("Channel 1");
+                    board[1+(player.getPos())][9]="_";
+                }
+                else if(Math.floor(player.getPos()/6)==0){
+                    System.out.println("Channel 0");
+                    board[1][1+player.getPos()]=board[9][1+(player.getPos())];
+                    board[1][2+player.getPos()]=board[9][2+(player.getPos())];
+                }
+            }
+        }
+    }
+    }
+    public static void boardMakerTopBot(String[][] gameBoard, int arrayMod, Place[] board, int collumnMod, int rowMod, int lengthMinus, int opp, int grabMod, boolean bot) {
+        for (int i = 0; i < gameBoard.length - lengthMinus; i++) {
+            String temp = "";
+            if (bot == false) {
+                
+                if (i == 0) {
+                    String longest = "";
+                    for (int a = 0; a < gameBoard[i].length - lengthMinus; a++) {
+                        
+                        if (longest.length() < board[a + arrayMod].getName().length()) {
+                            longest = board[a + arrayMod].getName();
+
+                        }
+                        if (longest.length() < board[23 - a].getName().length()) {
+                            longest = board[23 - a].getName();
+                        }
+                    }
+                    
+                    for (int x = 0; x < (longest.length() - board[i + opp].getName().length()) / 2; x++) {
+                        temp += " ";
+                    }
+                    gameBoard[2 + rowMod][i + collumnMod] = temp + board[i].getName() + temp;
+                    while (gameBoard[2 + rowMod][i + collumnMod].length() != longest.length()) {
+                        if (gameBoard[2 + rowMod][i + collumnMod].length() > longest.length()) {
+                            gameBoard[2 + rowMod][i + collumnMod] = gameBoard[2 + rowMod][i + collumnMod].substring(0, gameBoard[2 + rowMod][i + collumnMod].length() - 2);
+                        } else if (gameBoard[2 + rowMod][i + collumnMod].length() < longest.length()) {
+                            gameBoard[2 + rowMod][i + collumnMod] += " ";
+                        }
+                    }
+                } else if (i == 6) {
+
+                    String longest = "";
+                    for (int a = 0; a < gameBoard[i].length - lengthMinus; a++) {
+
+                        if (longest.length() < board[a + (24 - arrayMod)].getName().length()) {
+                            longest = board[a + (24 - arrayMod)].getName();
+
+                        }
+                    }
+                    for (int x = 0; x < (longest.length() - board[opp - i].getName().length()) / 2; x++) {
+                        temp += " ";
+                    }
+                    gameBoard[2 + rowMod][i + collumnMod] = temp + board[opp - i].getName() + temp;
+                    while (gameBoard[2 + rowMod][i + collumnMod].length() != longest.length()) {
+                        if (gameBoard[2 + rowMod][i + collumnMod].length() > longest.length()) {
+                            gameBoard[2 + rowMod][i + collumnMod] = gameBoard[2 + rowMod][i + collumnMod].substring(0, gameBoard[2 + rowMod][i + collumnMod].length() - 2);
+                        } else if (gameBoard[2 + rowMod][i + collumnMod].length() < longest.length()) {
+                            gameBoard[2 + rowMod][i + collumnMod] += " ";
+                        }
+                    }
+                } 
+                
+                else if (board[i + grabMod].getName().length() < board[18-i].getName().length()) {
+                    System.out.println(board[18-i].getName());
+                    for (int x = 0; x < (board[18-i].getName().length() - board[i].getName().length()) / 2 + 1; x++) {
+                        temp += " ";
+                    }
+                    gameBoard[2][i + collumnMod] = temp + board[i].getName() + temp;
+                    while (gameBoard[2][i + collumnMod].length() != (board[18-i].getName().length())) {
+                        if (gameBoard[2 + rowMod][i + collumnMod].length() > (board[18-i].getName().length())) {
+                            gameBoard[2 + rowMod][i + collumnMod] = gameBoard[2 + rowMod][i + collumnMod].substring(0, gameBoard[2 + rowMod][i + collumnMod].length() - 2);
+                        } else if (gameBoard[2 + rowMod][i + collumnMod].length() < (board[18-i].getName().length())) {
+                            gameBoard[2 + rowMod][i + collumnMod] += " ";
+                        }
+                    }
+                } else {
+                    gameBoard[2][i + collumnMod] = board[i].getName();
+                }
+            } else {
+                if (i == 0) {
+                    String longest = "";
+                    for (int a = 0; a < gameBoard[i].length - lengthMinus; a++) {
+
+                        if (longest.length() < board[a + arrayMod].getName().length()) {
+                            longest = board[a + arrayMod].getName();
+
+                        }
+                    }
+                    for (int x = 0; x < (longest.length() - board[opp - i].getName().length()) / 2; x++) {
+                        temp += " ";
+                    }
+                    gameBoard[2 + rowMod][i + collumnMod] = temp + board[opp - i].getName() + temp;
+                } else if (i == 6) {
+                    String longest = "";
+                    for (int a = 0; a < gameBoard[i].length - lengthMinus; a++) {
+
+                        if (longest.length() < board[a + (24 - opp)].getName().length()) {
+                            longest = board[a + (24 - opp)].getName();
+                        }
+                    }
+                    for (int x = 0; x < (longest.length() - board[opp - i].getName().length()) / 2; x++) {
+                        temp += " ";
+                    }
+                    gameBoard[2 + rowMod][i + collumnMod] = temp + board[opp - i].getName() + temp+" ";
+                    
+                    
+                } 
+                
+                else if (board[i + grabMod].getName().length() > board[opp - i].getName().length()) {
+
+                    for (int x = 0; x < (board[i + grabMod].getName().length() - board[opp - i].getName().length()) / 2; x++) {
+                        temp += " ";
+                    }
+
+                    gameBoard[2 + rowMod][i + collumnMod] = temp + board[opp - i].getName() + temp;
+                    if(i==5){
+                        gameBoard[2 + rowMod][i + collumnMod] +=" ";
+                    }
+
+                } else {
+
+                    gameBoard[2 + rowMod][i + collumnMod] = board[opp - i].getName();
+
+
+                }
+            }
+
+
+        }
+    }
+    //SideBoardMaker(gameBoard, 7, board, 2, 3,6,23,0, true);
+    public static void SideBoardMaker(String[][] gameBoard, int arrayMod, Place[] board, int collumnMod, int rowMod, int lengthMinus, int opp, int grabMod, boolean left) {
+        for (int i = 0; i < gameBoard.length - lengthMinus; i++) {
+            String temp = "";
+            if (left == false) {
+
+                String longest = "";
+                for (int a = 0; a < gameBoard[i].length - lengthMinus; a++) {
+
+                    if (longest.length() < board[a + arrayMod].getName().length()) {
+                        longest = board[a + arrayMod].getName();
+
+                    }
+                }
+                for (int x = 0; x < (longest.length() - board[i + opp].getName().length()) / 2; x++) {
+                    temp += " ";
+                }
+                gameBoard[i + rowMod][collumnMod] = temp + board[i + arrayMod].getName() + temp;
+               while(gameBoard[i + rowMod][collumnMod].length()!=longest.length()){
+                  if(gameBoard[i + rowMod][collumnMod].length()>longest.length()){
+                     if(gameBoard[i + rowMod][collumnMod].substring(gameBoard[i + rowMod][collumnMod].length()-2,gameBoard[i + rowMod][collumnMod].length()-1).equals(" ")){
+                        gameBoard[i + rowMod][collumnMod] = gameBoard[i + rowMod][collumnMod].substring(0,gameBoard[i + rowMod][collumnMod].length()-2);
+                     }
+                     else{
+                        gameBoard[i + rowMod][collumnMod] = gameBoard[i + rowMod][collumnMod].substring(1);
+                     }
+                  }
+                  else if(gameBoard[i + rowMod][collumnMod].length()<longest.length()){
+                     gameBoard[i + rowMod][collumnMod]+=" ";
+                  }
+               }
+               gameBoard[i + rowMod][collumnMod] += "";
+
+
+            } else {
+
+                String longest = "";
+                for (int a = 0; a < gameBoard[i].length - lengthMinus; a++) {
+
+
+                    if (longest.length() < board[opp - a].getName().length()) {
+                        longest = board[opp - a].getName();
+
+                    }
+                }
+                for (int x = 0; x < (longest.length() - board[opp - i].getName().length()) / 2; x++) {
+                    temp += " ";
+                }
+                gameBoard[i + rowMod][collumnMod] = temp + board[opp - i].getName() + temp;
+                while(gameBoard[i + rowMod][collumnMod].length() != longest.length()){
+                  if(gameBoard[i + rowMod][collumnMod].length()>longest.length()){
+                     gameBoard[i + rowMod][collumnMod] = gameBoard[i + rowMod][collumnMod].substring(0,gameBoard[i + rowMod][collumnMod].length()-2);
+                  }
+                  else if(gameBoard[i + rowMod][collumnMod].length()<longest.length()){
+                     gameBoard[i + rowMod][collumnMod]+=" ";
+                  }
+                }
+              }
+            }
+        }
+    
     
     
 
@@ -120,12 +472,78 @@ public class Game {
         ArrayList < String > positionsPTwo = new ArrayList < String > ();
         makePlayerTrack(board, positionsPTwo);
 
-       
+        /*Making 2d array game board to do this i need to make a 11by 11 game board*/
+        String[][] gameBoard = new String[11][11];
+
+
+
+        //top board spaces
+        boardMakerTopBot(gameBoard, 17, board, 2, 0, 4, 12, 0, false);
+
+        //bottom board space
+        boardMakerTopBot(gameBoard, 0, board, 2, 6, 4, 18, 0, true);
+
+        //left side board space
+        SideBoardMaker(gameBoard, 7, board, 2, 3, 6, 23, 0, true);
+
+
+        //right side board space
+        SideBoardMaker(gameBoard, 7, board, 8, 3, 6, 0, 0, false);
+        //top
+        for (int x = 0; x < gameBoard[x].length - 4; x++) {
+            String temp = "";
+
+            for (int a = 0; a < gameBoard[2][x + 2].length(); a++) {
+                temp += "_";
+            }
+            gameBoard[0][x + 2] = temp;
+            gameBoard[1][x + 2] = temp;
+        }
+        //bottom
+        for (int x = 0; x < gameBoard[x].length - 4; x++) {
+            String temp = "";
+
+            for (int a = 0; a < gameBoard[8][x + 2].length(); a++) {
+                temp += "_";
+            }
+            gameBoard[9][x + 2] = temp;
+            gameBoard[10][x + 2] = temp;
+        }
+        //side
+        for (int x = 0; x < gameBoard[x].length - 1; x++) {
+            String temp = "_";
+            gameBoard[x][0] = temp;
+            gameBoard[x][1] = temp;
+        }
+        //side 2
+        for (int x = 0; x < gameBoard[x].length - 1; x++) {
+            String temp = "_";
+            gameBoard[x][9] = temp;
+            gameBoard[x][10] = temp;
+        }
+        gameBoard[10][0] = "_";
+        gameBoard[10][1] = "_";
+        gameBoard[10][9] = "_";
+        gameBoard[10][10] = "_";
+        //middle
+        for (int x = 0; x < gameBoard[x].length - 6; x++) {
+            String temp = "";
+
+            for (int a = 0; a < gameBoard[8][x + 3].length(); a++) {
+                temp += " ";
+            }
+            gameBoard[3][x + 3] = temp;
+            gameBoard[4][x + 3] = temp;
+            gameBoard[5][x + 3] = temp;
+            gameBoard[6][x + 3] = temp;
+            gameBoard[7][x + 3] = temp;
+        }
+        
 
         positionsPOne.set(0, "_1_");
         positionsPTwo.set(0, "_2_");
         int turn = 0;
-        
+        updatePos2D(gameBoard, order[turn%2],0, 1);
         //Game loop
         while (!gameOver) {
             //need to change the board to work on a 2d array list probaby or use an abreviation system as the board is huge
@@ -152,7 +570,7 @@ public class Game {
                     if (!(order[turn % 2].isJail())) {
                         int moveAmount = (int)(Math.random() * 6) + (int)(Math.random() * 6) + 2;
                         if (turn % 2 == 0) {
-                            
+                            updatePos2D(gameBoard, order[turn%2],moveAmount, 1);
                             updatePos(order[turn % 2], positionsPOne, positions, moveAmount, turn % 2 + 1);
                             board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
                             turn++;
@@ -166,8 +584,7 @@ public class Game {
                 } else {
                     int moveAmount = (int)(Math.random() * 6) + (int)(Math.random() * 6) + 2;
                     if (turn % 2 == 0) {
-                        
-                        
+                        updatePos2D(gameBoard, order[turn%2],moveAmount, 1);
                         updatePos(order[turn % 2], positionsPOne, positions, moveAmount, turn % 2 + 1);
                         board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
                         turn++;
@@ -214,7 +631,7 @@ public class Game {
             } else if (action.toLowerCase().equals("forcemove")) {
                 int moveAmount = myObj.nextInt();
                 if (turn % 2 == 0) {
-                    
+                    updatePos2D(gameBoard, order[turn%2],moveAmount, 1);
                     updatePos(order[turn % 2], positionsPOne, positions, moveAmount, turn % 2 + 1);
                     board[order[turn % 2].getPos()].runPlace(order[turn % 2]);
                     
