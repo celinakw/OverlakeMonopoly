@@ -15,7 +15,7 @@ public class Player{
     public Player(){
    
        bank = 1500;
-       pos = 12;
+       pos = 0;
        inJail= false;
        timeJail = 0;
    
