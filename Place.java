@@ -37,106 +37,6 @@ public class Place {
         monopolies = mono;
     }
 
-    public void runPlace(Player play) {
-
-
-        if (isSpecial.equals("no")) {
-            System.out.println("You landed on the place, " + this.getName());
-        } else {
-            System.out.println("You landed on, " + this.getName() + ". Which is: " + this.getIsSpecial());
-        }
-
-        if (this.isPlace) {
-            if (this.owner == null) {
-                System.out.println("Do you want to buy " + this.name + "? Cost to buy: " + cost + ". Rent is: " + this.rent + ". \"yes\" or \"no\"");
-                Scanner myObj = new Scanner(System.in);
-                finished = false;
-                while (finished == false) {
-                    String response = myObj.nextLine();
-                    if (response.toLowerCase().equals("yes")) {
-                        play.take(cost);
-                        this.owner = play;
-                        play.addPlace(this);
-                        finished = true;
-                    } else if (response.toLowerCase().equals("no")) {
-                        finished = true;
-
-                    } else {
-                        System.out.println("Not a valid response");
-                        System.out.println("Do you want to buy " + this.name + "? Cost to buy: " + cost + ". \"yes\" or \"no\"");
-                    }
-                }
-
-            } else if (this.owner == play) {
-
-                int counter = 0;
-                for (Place item: (this.owner).ownPlace()) {
-                    if (item.getMono().equals(this.getMono())) {
-                        counter++;
-                    }
-                }
-                if (counter == 3) {
-                    Scanner myObj = new Scanner(System.in);
-
-                    int housePrice = cost;
-
-                    if (numHouses == 3) {
-                        System.out.println("Do you want to buy a hotel? It costs " + housePrice);
-
-                        String input = myObj.nextLine();
-
-                        if (input.toLowerCase().equals("yes")) {
-
-                            owner.take(housePrice);
-
-                            rent *= 3;
-
-                            numHouses++;
-
-                            System.out.println("Rent is now $" + rent);
-
-                            System.out.println("You now have $" + this.owner.getBank());
-
-                        }
-                    } else {
-
-                        System.out.println("Do you want to buy a house? It costs " + housePrice);
-
-                        String input = myObj.nextLine();
-
-                        if (input.toLowerCase().equals("yes")) {
-
-                            owner.take(housePrice);
-
-                            rent *= 2;
-
-                            numHouses++;
-
-                            System.out.println("Rent is now $" + rent);
-
-                            System.out.println("You now have $" + this.owner.getBank());
-
-                        }
-
-                    }
-                }
-            } else {
-                int counter = 0;
-                for (Place item: (this.owner).ownPlace()) {
-                    if (item.getMono().equals(this.getMono())) {
-                        counter++;
-                    }
-                }
-                if (counter == 3) {
-                    System.out.println("You landed on " + owner.getName() + "'s monopoly and must pay rent: " + rent);
-                    play.take(rent * 3);
-                    owner.give(rent * 3);
-                } else {
-                    System.out.println("You landed on " + owner.getName() + "'s house and must pay rent: " + rent);
-                    play.take(rent);
-                    owner.give(rent);
-                }
-
             }
         }
 
@@ -296,6 +196,20 @@ public class Place {
 
             }
 
+         
+      }
+      
+  }
+   
+  /*public void house(){
+  
+   Scanner sc = new Scanner(System.in);
+   
+   if(this.getIsSpecial().equals("no") && this.owner.ownPlace().size() > 1){
+   
+      boolean checkAllOwned = true;
+
+
         }
 
     }
@@ -347,6 +261,7 @@ public class Place {
      }
   
   
+
     }*/
 
 
@@ -373,3 +288,15 @@ public class Place {
     }
 
 }
+
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
