@@ -177,7 +177,7 @@ public class Place{
          else if(randNum < 3){
          //add Game.getBoard 
             System.out.println("Chris wants to give you donuts! You've been moved to Mathsci Conference Room");
-            //play.move(INSERT BOARD LENGTH- 1 - play.getPos());
+            play.move(23- 1 - play.getPos());
          }
          else if(randNum < 4){
             System.out.println("You were caught cheating, and get sent to SRB.");
@@ -187,7 +187,7 @@ public class Place{
          //fix this and the one above 
             System.out.println("Your computer died, you go to the TLC tech center, but they break your computer, and you must pay $500");
             play.take(500);
-            //play.move(INSERT BOARD LENGTH- 1 - play.getPos());
+            play.move(23- 1 - play.getPos());
          }
       }
       
